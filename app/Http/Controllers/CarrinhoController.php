@@ -110,7 +110,8 @@ class CarrinhoController extends Controller
             'total' => $total,
             'subtotal' => $subtotal,
             'frete' => $frete,
-            'cep' => $request->cep
+            'cep' => $request->cep,
+            'status' => Pedido::STATUS_PENDENTE
         ]);
 
         foreach ($carrinho as $item) {

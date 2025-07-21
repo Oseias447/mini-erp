@@ -43,6 +43,41 @@ Acesse no navegador:
 🎟️ Cupons: http://127.0.0.1:8000/cupons
 
 
+# Rotas disponíveis
+- Produtos
+http://127.0.0.1:8000/produtos
+CRUD para gerenciamento de produtos, variações e estoque.
+
+- Cupons
+http://127.0.0.1:8000/cupons
+Gerenciamento de cupons com validade e regras de valor mínimo.
+
+- Carrinho / Checkout
+http://127.0.0.1:8000/carrinho
+Visualização do carrinho, finalização do pedido e aplicação de cupons.
+
+- Webhook para atualização de status do pedido
+http://127.0.0.1:8000/webhook/pedido-status
+
+Método: POST
+
+Corpo JSON esperado:
+
+{
+  "pedido_id": 1,
+  "status": "cancelado"
+}
+
+# Funcionalidade:
+
+Se o status for "cancelado", o pedido será removido do banco.
+
+Para outros status válidos ("pendente", "pago", "enviado"), o status do pedido será atualizado.
+
+Observação:
+Essa rota está isenta da verificação CSRF. Para testes via Postman, use o método POST com cabeçalhos Content-Type: application/json e Accept: application/json.
+
+
 📑 Funcionalidades principais
 
 ✅ Cadastro, edição e exclusão de Produtos com variações e estoque
@@ -65,5 +100,3 @@ Configure corretamente seu .env para banco de dados e SMTP de e-mail
 O projeto usa Bootstrap 5 e Blade Templates
 
 Testado em ambiente local com XAMPP + Laravel Serve
-
-
